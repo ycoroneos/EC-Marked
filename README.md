@@ -9,10 +9,6 @@ is read by the generator
 
 Alternatively, you can use your own text
 
-In the generator (C++ code), all of the variables that matter are in the
-main function. I'm just lazy and haven't implemented command line
-arguments yet.
-
 The C++ runs fast but it bugs me that I used stl all over the place
 (it's not ethical) so in the future I may improve it to adhere more
 closely to pure C/C++ (leaning towards C) standards.
