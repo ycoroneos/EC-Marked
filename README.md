@@ -20,8 +20,7 @@ closely to pure C/C++ (leaning towards C) standards.
 The python script uses imaplib and the structure/style is based off some
 example I found on the internet that I basically gutted.
 
-
-****************USAGE*******************
+USAGE:
 -run the python script and do what it says
 -compile the C++ (I recommend with scons since there's already a build script there) and run it
 
