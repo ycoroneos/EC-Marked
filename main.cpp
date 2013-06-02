@@ -12,10 +12,24 @@ using namespace std;
 
 void generate(map<Prefix, vector<string> > dict, int amnt);
 
-int main()
+int main(int argc, char* argv[])
 {
     int psize=1;
-    string file="output";
+    int loops=0;
+    int per_loop=0;
+    string file;
+    if (argc<4)
+    {
+      cerr << "Usage: " << argv[0] << " prefix_size source_file #loops #iterations_per_loop\n";
+    }
+    else
+    {
+      psize=atoi(argv[1]);
+      file=argv[2];
+      loops=atoi(argv[3]);
+      per_loop=atoi(argv[4]);
+      srand(time(NULL));
+    }
     map<Prefix,vector<string> > dictionary;
     ifstream infile;
     infile.open(file.c_str());
@@ -43,20 +57,17 @@ int main()
         }
         infile >> input[psize];
     }
-    cout << "finished reading file\n";
-    //std::cout << "mymap contains:";
-    //for ( map<Prefix, vector<string> >::iterator  it = dictionary.begin(); it != dictionary.end(); ++it )
-     //   std::cout << " " << it->first.getAllPrefix() << ":" << it->second[0];
-    //std::cout << std::endl;
-    generate(dictionary, 1000);
+    for (int i=0; i<loops; ++i)
+    {
+      generate(dictionary, per_loop);
+      cout << "\n\n";
+    }
     return 0;
 }
 
 void generate(map<Prefix, vector<string> > dict, int amnt)
 {
-    srand(time(NULL));
     int randint=rand() % (dict.size()-1) + 0;
-    //cout << "dict size: " << dict.size() << " randint: " << randint << endl;
     map<Prefix, vector<string> >::iterator  it=dict.begin();
     while (randint>0)
     {
@@ -70,19 +81,9 @@ void generate(map<Prefix, vector<string> > dict, int amnt)
     }
     randint=(rand() % (it->second.size()) + 1)-1;
     chain.push_back(it->second[randint]);
-    for (int i=0; i<chain.size()-1; ++i)
-    {
-        //cout << chain[i] << " ";
-    }
     while (amnt>=0)
     {
         cout << chain.back() + " ";
-        /*for (int i=0; i<chain.size(); ++i)
-        {
-          cout << chain[i] << " ";
-        }
-        cout << "\n****************************\n";
-        */
         for (int i=0; i<chain.size()-1; ++i)
         {
             chain[i]=chain[i+1];
@@ -98,7 +99,6 @@ void generate(map<Prefix, vector<string> > dict, int amnt)
         }
         else
         {
-          //cout << "\n\nfound nothing\n";
           break;
         }
         --amnt;
