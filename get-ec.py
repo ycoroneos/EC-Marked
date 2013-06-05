@@ -17,8 +17,8 @@ items = items[0].split() # getting the mails id
 
 f=open(filename,'w')
 
-if (fetch>0):
-    sublist=items[0:int(fetch)]
+if (int(fetch)>0):
+    sublist=items[-1*int(fetch):]
 else:
     sublist=items
 
