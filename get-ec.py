@@ -1,8 +1,10 @@
+#!/usr/bin/python
 import email, getpass, imaplib, os
 
 detach_dir = './ec-discuss'   #directory where to save attachments (default: current)
 user = raw_input("your email (without the @...): ")
-pwd = raw_input("password: ")
+#pwd = raw_input("password: ")
+pwd=getpass.getpass()
 filename = raw_input("output file name: ")
 fetch = raw_input("number of emails to fetch, 0 for all: ")
 

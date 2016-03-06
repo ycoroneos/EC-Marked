@@ -1,6 +1,12 @@
 EC-Marked
 =========
 
+UPDATE: use the makefile because I don't like scons anymore
+make
+
+when done:
+make clean
+
 "Basement breakers are fed from sorrow to those who share your hall" ~ec-discuss
 
 This is a markov chain generator coupled with a python script that

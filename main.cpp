@@ -33,7 +33,7 @@ int main(int argc, char* argv[])
     map<Prefix,vector<string> > dictionary;
     ifstream infile;
     infile.open(file.c_str());
-    string input[psize+1];
+    string *input = new string[psize+1];
     for (int i=0; i<psize+1; ++i)
     {
         infile >> input[i];
@@ -62,6 +62,7 @@ int main(int argc, char* argv[])
       generate(dictionary, per_loop);
       cout << "\n\n";
     }
+    delete[] input;
     return 0;
 }
 
